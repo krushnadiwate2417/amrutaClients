@@ -9,18 +9,20 @@ const User = () => {
   const [email, setEmail] = useState(""); // added email state
   const [loaderState, setLoaderState] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [buttonState,setButtonState] = useState(true);
   const [text, setText] = useState("Submitting Your Feedback");
   const [err, setErr] = useState("");
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErr("");
+
+    if(!fullName || !feedback){
+      return setErr("Please Enter your feedback")
+    }
+
     setLoaderState(true);
 
     if (fullName && feedback) {
-      setButtonState(false)
       const data = {
         fullName,
         email,
@@ -98,8 +100,7 @@ const User = () => {
           <div className="flex justify-between gap-4">
             <button
               type="submit"
-              disabled = {buttonState}
-              className={`w-full ${buttonState ? 'bg-gray-200' :  "bg-pink-600"} text-white py-2 rounded-xl ${buttonState ? 'hover:cursor-not-allowed' : ' hover:bg-pink-500'} transition duration-300`}
+              className={`w-full bg-pink-600 text-white py-2 rounded-xl  hover:bg-pink-500 transition duration-300`}
             >
               Submit
             </button>
