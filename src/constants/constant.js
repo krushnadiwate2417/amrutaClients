@@ -1,1 +1,1 @@
-export const POST_URL = 'https://feedback-server-olive.vercel.app/api/v1/submit-feedback'
+export const POST_URL = 'https://amruta-feedback-server.vercel.app/submit-feedback'
